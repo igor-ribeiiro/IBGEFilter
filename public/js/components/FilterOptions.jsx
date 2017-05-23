@@ -7,7 +7,9 @@ import React from 'react';
 class FilterOptions extends React.Component {
     constructor(props) {
         const list = (
-            <ul>
+            <ul style={{
+                paddingLeft: '10px'
+            }}>
                 <li>Idade</li>
                 <li>Sexo</li>
                 <li>Nacionalidade</li>

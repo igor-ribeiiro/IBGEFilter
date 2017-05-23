@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Body from './Body.jsx';
+import BodyRender from './BodyRender.jsx';
 import Heading from './Heading.jsx';
 
 class App extends React.Component {
@@ -16,7 +16,7 @@ class App extends React.Component {
                 marginRight: 'auto'
             }}>
                 <Heading />
-                <Body />
+                <BodyRender />
             </div>
         )
     }
