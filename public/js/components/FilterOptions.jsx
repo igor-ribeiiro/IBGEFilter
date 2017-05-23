@@ -5,24 +5,25 @@
 import React from 'react';
 
 class FilterOptions extends React.Component {
-    constructor() {
-        super();
-    }
-    getFilterOptions() {
-        return (
+    constructor(props) {
+        const list = (
             <ul>
                 <li>Idade</li>
                 <li>Sexo</li>
                 <li>Nacionalidade</li>
                 <li>Renda</li>
             </ul>
-        )
+        );
+        super(props);
+        this.state = {
+            list: list
+        }
     }
 
     render() {
         return (
             <div>
-                {this.getFilterOptions()}
+                {this.state.list}
             </div>
         )
     }

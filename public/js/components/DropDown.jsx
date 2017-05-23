@@ -6,22 +6,23 @@ import React from 'react';
 import FilterOptions from './FilterOptions.jsx';
 
 class DropDown extends React.Component {
-    constructor() {
-        super();
-        this.setState({
-            opened: false
-        })
+    constructor(props) {
+        super(props);
+        this.state = {
+            opened: false}
     }
+
     handleClick() {
+        const newState = !this.state.opened;
         this.setState({
-            opened: !this.state.opened
+            opened: newState
         })
     }
     render() {
         if(this.state.opened) {
             return (
                 <div>
-                    <span onClick={() => this.handleClick()}>Opções de Filtro...</span>
+                    <button onClick={() => this.handleClick()}>Opções de Filtro...</button>
                     <FilterOptions/>
                 </div>
             )
@@ -29,7 +30,7 @@ class DropDown extends React.Component {
         else {
             return (
                 <div>
-                    <span onClick={() => this.handleClick()}>Opções de Filtro...</span>
+                    <button onClick={() => this.handleClick()}>Opções de Filtro...</button>
                 </div>
             )
         }
