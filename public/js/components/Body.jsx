@@ -4,25 +4,75 @@
 
 import React from 'react';
 import DropDown from './DropDown.jsx';
+import {changeOpenedState} from './DropDown.jsx';
+import FilterOptions from './FilterOptions.jsx';
 
 class Body extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-        }
+            currentOpened: 'none'
+        };
     }
 
     handleSubmitClick() {
 
     }
 
+    handleButtonClick(newOpened) {
+        if(this.state.currentOpened === newOpened) {
+            this.setState({
+                currentOpened: 'none'
+            })
+        }
+        else {
+            this.setState({
+                currentOpened: newOpened
+            });
+        }
+    }
+
+    getList() {
+        const itens = [{
+            text: 'Selecione o gênero',
+            filter: 'gênero'
+        }, {
+            text: 'Selecione a idade',
+            filter: 'idade'
+        },{
+            text: 'Selecione a classe social',
+            filter: 'classe social'
+        }];
+
+        const spamStyle = {marginRight: '10px'};
+        let list =[];
+
+        for(let i in itens) {
+            if(itens.hasOwnProperty(i)) {
+                console.log("this.state.currentOpened = " + this.state.currentOpened);
+                console.log("itens[i].filter = " + itens[i].filter);
+                list.push(
+                        <div style={{marginBottom:"30px"}}
+                             key = {itens[i].filter}>
+                            <span style= {spamStyle}>{itens[i].text}</span>
+                            <div className="dropDownButton dropdown">
+                                <button onClick={() => this.handleButtonClick(itens[i].filter)}
+                                        className="btn">{itens[i].filter}</button>
+                                <FilterOptions filter={itens[i].filter}
+                                               opened={this.state.currentOpened === itens[i].filter}/>
+                            </div>
+                        </div>
+                );
+            }
+        }
+        return list;
+    }
+
     render() {
+        const list = this.getList();
         return (
             <div>
-                <DropDown texto="Selecione o gênero" filtro="gênero"/>
-                <DropDown texto="Selecione a idade" filtro="idade"/>
-                <DropDown texto="Selecione a classe social" filtro="classe social"/>
-
+                {list}
                 <button className="btn" onClick={()=>this.handleSubmitClick()}> Consultar </button>
             </div>
         )
