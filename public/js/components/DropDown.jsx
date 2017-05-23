@@ -9,7 +9,8 @@ class DropDown extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            opened: false}
+            opened: false
+        }
     }
 
     handleClick() {
@@ -21,16 +22,18 @@ class DropDown extends React.Component {
     render() {
         if(this.state.opened) {
             return (
-                <div>
-                    <button onClick={() => this.handleClick()}>Opções de Filtro...</button>
+                <div className="btn dropDown">
+                    <span>{this.props.texto}</span>
+                    <button onClick={() => this.handleClick()}>{this.props.filtro}</button>
                     <FilterOptions/>
                 </div>
             )
         }
         else {
             return (
-                <div>
-                    <button onClick={() => this.handleClick()}>Opções de Filtro...</button>
+                <div className="btn dropDown">
+                    <span>{this.props.texto}</span>
+                    <button onClick={() => this.handleClick()}>{this.props.filtro}</button>
                 </div>
             )
         }
