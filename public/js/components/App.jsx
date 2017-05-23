@@ -1,6 +1,6 @@
 import React from 'react';
 
-import DropDown from './DropDown.jsx';
+import Body from './Body.jsx';
 import Heading from './Heading.jsx';
 
 class App extends React.Component {
@@ -16,7 +16,7 @@ class App extends React.Component {
                 marginRight: 'auto'
             }}>
                 <Heading />
-                <DropDown />
+                <Body />
             </div>
         )
     }

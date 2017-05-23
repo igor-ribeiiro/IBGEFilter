@@ -3,13 +3,12 @@
  */
 
 import React from 'react';
-import DropDown from './DropDown.jsx";
+import DropDown from './DropDown.jsx';
 
 class Body extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            idade:
         }
     }
 

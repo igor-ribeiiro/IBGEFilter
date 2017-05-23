@@ -22,18 +22,22 @@ class DropDown extends React.Component {
     render() {
         if(this.state.opened) {
             return (
-                <div className="btn dropDown">
-                    <span>{this.props.texto}</span>
-                    <button onClick={() => this.handleClick()}>{this.props.filtro}</button>
-                    <FilterOptions/>
+                <div>
+                    <div className="btn dropDown">
+                        <span>{this.props.texto}</span>
+                        <button onClick={() => this.handleClick()}>{this.props.filtro}</button>
+                        <FilterOptions/>
+                    </div>
                 </div>
             )
         }
         else {
             return (
-                <div className="btn dropDown">
-                    <span>{this.props.texto}</span>
-                    <button onClick={() => this.handleClick()}>{this.props.filtro}</button>
+                <div>
+                    <div className="btn dropDown">
+                        <span>{this.props.texto}</span>
+                        <button onClick={() => this.handleClick()}>{this.props.filtro}</button>
+                    </div>
                 </div>
             )
         }
