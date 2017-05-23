@@ -14,13 +14,22 @@ class BodyRender extends Body {
     getList() {
         const itens = [{
             text: 'Selecione o gênero',
-            filter: 'gênero'
+            filter: 'Gênero'
         }, {
-            text: 'Selecione a idade',
-            filter: 'idade'
+            text: 'Selecione a faixa etária',
+            filter: 'Idade'
         }, {
-            text: 'Selecione a classe social',
-            filter: 'classe social'
+            text: 'Selecione a família',
+            filter: 'Família'
+        }, {
+            text: "Selecione a fecundidade",
+            filter: 'Fecundidade'
+        }, {
+            text: "Selecione a nupicialidade",
+            filter: "Nupicialidade"
+        }, {
+            text: "Selecione o rendimento",
+            filter: "Rendimento"
         }];
 
         const spamStyle = {marginRight: '10px'};
