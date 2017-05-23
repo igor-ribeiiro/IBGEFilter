@@ -22,7 +22,6 @@ class FilterOptions extends React.Component {
 
 
     render() {
-        console.log(this.props.opened);
         return (
             <div className="dropDown"
                  style={{visibility: this.props.opened ? 'visible' : 'hidden'}}>

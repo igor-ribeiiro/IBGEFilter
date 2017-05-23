@@ -3,8 +3,6 @@
  */
 
 import React from 'react';
-import DropDown from './DropDown.jsx';
-import {changeOpenedState} from './DropDown.jsx';
 import FilterOptions from './FilterOptions.jsx';
 
 class Body extends React.Component {
@@ -49,15 +47,14 @@ class Body extends React.Component {
 
         for(let i in itens) {
             if(itens.hasOwnProperty(i)) {
-                console.log("this.state.currentOpened = " + this.state.currentOpened);
-                console.log("itens[i].filter = " + itens[i].filter);
                 list.push(
                         <div style={{marginBottom:"30px"}}
                              key = {itens[i].filter}>
                             <span style= {spamStyle}>{itens[i].text}</span>
                             <div className="dropDownButton dropdown">
                                 <button onClick={() => this.handleButtonClick(itens[i].filter)}
-                                        className="btn">{itens[i].filter}</button>
+                                        className="btn">{itens[i].filter} &nbsp; <i className="fa fa-angle-down">
+                                </i></button>
                                 <FilterOptions filter={itens[i].filter}
                                                opened={this.state.currentOpened === itens[i].filter}/>
                             </div>
