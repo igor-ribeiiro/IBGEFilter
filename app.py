@@ -21,7 +21,7 @@ MAX_WAIT_BEFORE_SHUTDOWN = 3
 
 
 def sig_handler(sig, _):
-    logging.warning(f'Caught signal: {sig}')
+    logging.warning('Caught signal: %s' % sig)
     tornado.ioloop.IOLoop.instance().add_callback(shutdown)
 
 
