@@ -25,15 +25,23 @@ class Body extends React.Component {
         const target = e.target;
         const value = target.value;
         const name = target.name;
-        this.setState({
-            [name]: value
-        });
+
+        if(name === value) {
+            this.setState({
+                [name]: 'none'
+            })
+        }
+        else {
+            this.setState({
+                [name]: value
+            });
+        }
     }
 
     handleSubmitClick(e) {
         e.preventDefault;
         let show = true;
-        console.log(this);
+
         const current = this.state;
         for(let i in current) {
             if(current.hasOwnProperty(i)) {
@@ -49,6 +57,9 @@ class Body extends React.Component {
             this.setState({
                 ShowTable: true
             })
+        }
+        else {
+            alert("Por favor, selecione todas as opções");
         }
     }
 }
