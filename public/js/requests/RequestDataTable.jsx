@@ -10,6 +10,16 @@ function RequestDataTable(values) {
         valor: "917144"
     });
 
+    // fetch('/filter', {
+    //     method: 'GET'
+    // }).then(function(response) {
+    //     data = response;
+    //     console.log(data);
+    // }).catch(function(err) {
+    //     // Error :(
+    //     throw err;
+    // });
+
     return data;
 }
 

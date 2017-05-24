@@ -3,19 +3,17 @@
  */
 
 import React from 'react';
-import _Filter from '_Components/_Filter';
+import _Filter from './_Components/_Filter.jsx';
 
 class Filter extends _Filter {
     constructor(props) {
         super(props);
-
-        this.changeFiltersOptions = this.changeFiltersOptions.bind(this);
     }
 
     render() {
         return (
             <div>
-                <a>Selecione o filtro: </a>
+                Selecione o filtro:
                 <select className="custom-select" onChange={this.changeFiltersOptions} name="filter">
                     <option defaultChecked value="populacao">População</option>
                     <option value="familias">Famílias</option>
@@ -24,9 +22,10 @@ class Filter extends _Filter {
                     <option value="rendimento">Rendimento</option>
                 </select>
 
-                {this.filterOptions}
+                {this.filterOptionsFor(this.state.filter)}
             </div>
         );
     }
 }
 
+export default Filter;

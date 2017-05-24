@@ -53,14 +53,9 @@ class Body extends React.Component {
             }
         }
 
-        if(show) {
-            this.setState({
-                ShowTable: true
-            })
-        }
-        else {
-            alert("Por favor, selecione todas as opções");
-        }
+        this.setState({
+            ShowTable: true
+        });
     }
 }
 

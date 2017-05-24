@@ -50,6 +50,7 @@ def main():
 
     application = tornado.web.Application([
         (r'/', handlers.MainHandler),
+        (r'/filter', handlers.FilterHandler),
     ], **settings)
 
     global server
