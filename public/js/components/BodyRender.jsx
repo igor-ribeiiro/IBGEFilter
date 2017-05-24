@@ -3,9 +3,9 @@
  */
 
 import React from 'react';
-import FilterOptions from './FilterOptions.jsx';
 import Body from './Body.jsx';
 import ResultsTable from './ResultsTable.jsx'
+import requestPropeties from './../requests/RequestProperties.jsx';
 
 class BodyRender extends Body {
     constructor(props) {
@@ -19,10 +19,8 @@ class BodyRender extends Body {
                 /*
                  Fazer a lógica da request
                  */
-                let aux = [];
-                for(let j = 0; j <= i; j ++) {
-                    aux.push(j.toString());
-                }
+                let aux = requestPropeties(itens[i].filter, i);
+
                 let current = [];
 
                 for(let j in aux) {
