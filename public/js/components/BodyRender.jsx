@@ -12,38 +12,6 @@ class BodyRender extends Body {
         super(props);
     }
 
-    getOptions(itens) {
-        let options =[];
-        for(let i in itens) {
-            if(itens.hasOwnProperty(i)) {
-                /*
-                 Fazer a lógica da request
-                 */
-                let aux = requestPropeties(itens[i].filter, i);
-
-                let current = [];
-
-                for(let j in aux) {
-                    if(aux.hasOwnProperty(j)) {
-                        current.push(
-                            <option defaultValue={aux[j]} key={aux[j]}>
-                                {aux[j]}
-                            </option>
-                        );
-                    }
-                }
-                options.push(
-                    <select className="custom-select" key={itens[i].filter}
-                    onChange = {this.handleInputChange} name={itens[i].filter}>
-                        <option defaultChecked>{itens[i].filter}</option>
-                        {current}
-                    </select>
-                );
-            }
-        }
-        return options;
-    }
-
     getList() {
         const itens = [{
             text: 'Selecione o gênero',
