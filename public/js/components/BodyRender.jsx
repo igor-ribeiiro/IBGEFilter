@@ -13,46 +13,6 @@ class BodyRender extends Body {
         super(props);
     }
 
-    getList() {
-        const itens = [{
-            text: 'Selecione o gênero',
-            filter: 'genero'
-        }, {
-            text: 'Selecione a faixa etária',
-            filter: 'idade'
-        }, {
-            text: 'Selecione a família',
-            filter: 'familia'
-        }, {
-            text: "Selecione a fecundidade",
-            filter: 'fecundidade'
-        }, {
-            text: "Selecione a nupicialidade",
-            filter: "nupicialidade"
-        }, {
-            text: "Selecione o rendimento",
-            filter: "rendimento"
-        }];
-
-        // const spamStyle = {marginRight: '10px'};
-        let list = [];
-        // const options = this.getOptions(itens);
-        //
-        // for (let i in itens) {
-        //     if (itens.hasOwnProperty(i)) {
-        //         list.push(
-        //             <div style={{marginBottom: "30px"}}
-        //                  key={itens[i].filter}>
-        //                 <span style={spamStyle}>{itens[i].text}</span>
-        //                     {options[i]}
-        //             </div>
-        //         );
-        //     }
-        // }
-        return list;
-    };
-
-
     render() {
         return (
             <div>

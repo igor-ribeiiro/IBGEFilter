@@ -11,6 +11,7 @@ class Filter extends _Filter {
     }
 
     render() {
+        console.log(this.state);
         return (
             <div>
                 Selecione o filtro: &nbsp;
