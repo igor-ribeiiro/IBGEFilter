@@ -11,18 +11,22 @@
     "build:app": "browserify -u react -u react-dom js/index.js | uglifyjs -c warnings=false,drop_console -m > build/js/bundle.js",
     "build:vendor": "browserify -r react -r react-dom | uglifyjs -c warnings=false,drop_console -m > build/js/vendor.js"
   },
-  "contributors": [{
-    "name": "Igor Ribeiro",
-    "email": "ribeiro_igor@gmail.com"
-  }, {
-    "name": "Luis Holanda",
-    "email": "luiscmholanda@gmail.com"
-  }],
+  "contributors": [
+    {
+      "name": "Igor Ribeiro",
+      "email": "ribeiro_igor@gmail.com"
+    },
+    {
+      "name": "Luis Holanda",
+      "email": "luiscmholanda@gmail.com"
+    }
+  ],
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.16.1",
+    "font-awesome": "^4.7.0",
     "react": "^15.0.2",
-    "react-dom": "^15.0.2",
-    "font-awesome": "^4.7.0"
+    "react-dom": "^15.0.2"
   },
   "devDependencies": {
     "babel": "^6.5.2",

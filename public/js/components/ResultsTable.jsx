@@ -4,7 +4,6 @@
 
 
 import React from 'react';
-import requestTableData from './../requests/RequestDataTable.jsx';
 
 class ResultsTable extends React.Component {
     constructor(props) {
@@ -12,7 +11,8 @@ class ResultsTable extends React.Component {
     }
 
     getTableData() {
-        const aux = requestTableData(this.props);
+        const aux = this.props.table;
+        console.log(aux);
         let data =[];
 
         for(let i in aux) {
@@ -20,7 +20,7 @@ class ResultsTable extends React.Component {
                 data.push(
                     <tr key = {aux[i].estado}>
                         <td>{aux[i].estado}</td>
-                        <td>{aux[i].valor}</td>
+                        <td>{aux[i].value}</td>
                     </tr>
                 );
             }

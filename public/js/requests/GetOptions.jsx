@@ -1,5 +1,5 @@
 function getOptions() {
-    const options = {
+    return {
         'populacao': {
             'genero': [
                 'feminino',
@@ -61,7 +61,6 @@ function getOptions() {
             'mais de 20 salários mínimos'
         ]
     };
-    return options;
 }
 
 export default getOptions;

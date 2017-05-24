@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BodyRender from './BodyRender.jsx';
+import Body from './Body.jsx';
 import Heading from './Heading.jsx';
 
 class App extends React.Component {
@@ -10,13 +10,9 @@ class App extends React.Component {
 
     render() {
         return (
-            <div style={{
-                width: '65%',
-                marginLeft: 'auto',
-                marginRight: 'auto'
-            }}>
+            <div className="center">
                 <Heading />
-                <BodyRender />
+                <Body />
             </div>
         )
     }

@@ -1,64 +1,39 @@
 /**
- * Created by luiscm on 24/05/17.
+ * Created by igor on 23/05/17.
  */
 
 import React from 'react';
-import getOptions from './../../requests/GetOptions.jsx'
+import axios from 'axios';
+import getOptions from '../../requests/GetOptions.jsx';
 
 
-class _Filter extends React.Component {
+class _Body extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            ShowTable: false,
+            filter: {
+                filter: 'populacao',
+                value: '',
+                genero: 'feminino',
+                idade: '0 a 4 anos'
+            }
+        };
+
+        this.results = {};
+
+        this.options = getOptions();
+
+        this.handleSubmitClick = this.handleSubmitClick.bind(this);
         this.changeFiltersOptions = this.changeFiltersOptions.bind(this);
         this.changeGenderOptions = this.changeGenderOptions.bind(this);
         this.changeAgeOptions = this.changeAgeOptions.bind(this);
         this.changeValueOptions = this.changeValueOptions.bind(this);
         this.filterOptionsFor = this.filterOptionsFor.bind(this);
-
-
-        this.options = getOptions();
-        this.state = ({
-            filter: 'populacao',
-            value: '',
-            genero: 'feminino',
-            idade: '0 a 4 anos'
-        })
     }
 
-    changeFiltersOptions(e) {
-        const newFilter = e.target.value;
-        if(newFilter === 'populacao') {
-            this.setState({
-                filter: newFilter,
-                genero: 'feminino',
-                idade: '0 a 4 anos'
-            });
-        }
-        else {
-            this.setState({
-                filter: newFilter,
-                value: this.options[newFilter][0]
-            })
-        }
-
-    }
-    changeGenderOptions(e) {
-        this.setState({
-            genero: e.target.value
-        })
-    }
-    changeAgeOptions(e) {
-        this.setState({
-            idade: e.target.value
-        })
-    }
-    changeValueOptions(e) {
-        this.setState({
-            value: e.target.value
-        })
-    }
-
-    filterOptionsFor(filter) {
+    filterOptionsFor(state) {
+        let filter = state.filter;
         let options = this.options[filter];
 
         if (filter !== 'populacao') {
@@ -120,7 +95,74 @@ class _Filter extends React.Component {
             )
         }
     }
+
+    handleSubmitClick(e) {
+        e.preventDefault;
+
+        axios.post('/filter', this.state.filter)
+            .then((res) => {
+                this.setState({
+                    ShowTable: true,
+                    filter: this.state.filter,
+                    results: res.data
+                })
+            })
+    }
+
+    changeFiltersOptions(e) {
+        const newFilter = e.target.value;
+        if(newFilter === 'populacao') {
+            this.setState({
+                ShowTable: this.state.ShowTable,
+                filter: {
+                    filter: newFilter,
+                    genero: 'feminino',
+                    idade: '0 a 4 anos'
+                }
+            });
+        }
+        else {
+            this.setState({
+                ShowTable: this.state.ShowTable,
+                filter: {
+                    filter: newFilter,
+                    value: this.options[newFilter][0]
+                }
+            })
+        }
+    }
+
+    changeGenderOptions(e) {
+        this.setState({
+            ShowTable: this.state.ShowTable,
+            filter: {
+                filter: this.state.filter.filter,
+                genero: e.target.value,
+                idade: this.state.filter.idade
+            }
+        })
+    }
+
+    changeAgeOptions(e) {
+        this.setState({
+            ShowTable: this.state.ShowTable,
+            filter: {
+                filter: this.state.filter.filter,
+                genero: this.state.filter.genero,
+                idade: e.target.value
+            }
+        })
+    }
+
+    changeValueOptions(e) {
+        this.setState({
+            ShowTable: this.state.ShowTable,
+            filter: {
+                filter: this.state.filter.filter,
+                value: e.target.value
+            }
+        })
+    }
 }
 
-export default _Filter;
-
+export default _Body;
