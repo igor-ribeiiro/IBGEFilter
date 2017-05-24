@@ -8,30 +8,49 @@ class Body extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentOpened: 'none',
-            currentValue: ['none', 'none', 'none']
+            genero: 'none',
+            idade: 'none',
+            familia: 'none',
+            fecundidade: 'none',
+            nupicialidade: 'none',
+            rendimento: 'none',
+            ShowTable: false
         };
+
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmitClick = this.handleSubmitClick.bind(this);
     }
 
-    handleSubmitClick() {
-
+    handleInputChange(e) {
+        const target = e.target;
+        const value = target.value;
+        const name = target.name;
+        this.setState({
+            [name]: value
+        });
     }
 
-    handleButtonClick(newOpened) {
-        if(this.state.currentOpened === newOpened) {
+    handleSubmitClick(e) {
+        e.preventDefault;
+        let show = true;
+        console.log(this);
+        const current = this.state;
+        for(let i in current) {
+            if(current.hasOwnProperty(i)) {
+                if(current[i] === false || current[i] === true) continue;
+                if(current[i] === 'none') {
+                    show = false;
+                    break;
+                }
+            }
+        }
+
+        if(show) {
             this.setState({
-                currentOpened: 'none',
-                currentValue: this.state.currentValue
+                ShowTable: true
             })
         }
-        else {
-            this.setState({
-                currentOpened: newOpened,
-                currentValue: this.state.currentValue
-            })
-        }
     }
-
 }
 
 export default Body;
