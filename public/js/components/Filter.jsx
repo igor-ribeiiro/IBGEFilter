@@ -2,6 +2,7 @@
  * Created by luiscm on 24/05/17.
  */
 
+import React from 'react';
 import _Filter from '_Components/_Filter';
 
 class Filter extends _Filter {
