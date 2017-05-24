@@ -13,7 +13,7 @@ class Filter extends _Filter {
     render() {
         return (
             <div>
-                Selecione o filtro:
+                Selecione o filtro: &nbsp;
                 <select className="custom-select" onChange={this.changeFiltersOptions} name="filter">
                     <option defaultChecked value="populacao">População</option>
                     <option value="familias">Famílias</option>

@@ -12,75 +12,79 @@ class _Filter extends React.Component {
         this.changeFiltersOptions = this.changeFiltersOptions.bind(this);
         this.filterOptionsFor = this.filterOptionsFor.bind(this);
 
-        this.options = getOptions();
         this.state = ({
-            filter: 'populacao'
+            filter: 'populacao',
+            options: getOptions()
         })
     }
 
     changeFiltersOptions(e) {
         const newFilter = e.target.value;
-
         this.setState({
             filter: newFilter
         })
     }
 
     filterOptionsFor(filter) {
-        let options = this.options[filter];
-        if(options !== undefined) {
-            if (filter !== 'populacao') {
-                let optionsList = [];
+        let options = this.state.options[filter];
 
-                for (let i in options) {
-                    if (options.hasOwnProperty(i)) {
-                        optionsList.push(
-                            <option value={options[i]} key={options[i]}>{options[i]}</option>
-                        )
-                    }
+        if (filter !== 'populacao') {
+            let optionsList = [];
+
+            for (let i in options) {
+                if (options.hasOwnProperty(i)) {
+                    optionsList.push(
+                        <option value={options[i]} key={options[i]}>{options[i]}</option>
+                    )
                 }
+            }
 
-                return (
-                    <div>
-                        Selecione a opção desejada:
+            return (
+                <div>
+                    Selecione a opção desejada: &nbsp;
+                    <select>
+                        {optionsList}
+                    </select>
+                </div>
+            )
+        } else {
+            let generos = options.genero;
+            let faixas = options.faixa;
+
+            let genderList = [];
+            let faixaList = [];
+
+            for (let i in generos) {
+                if (generos.hasOwnProperty(i)) {
+                    genderList.push(
+                        <option value={generos[i]} key={generos[i]}>{generos[i]}</option>
+                    )
+                }
+            }
+
+            for (let i in faixas) {
+                if (faixas.hasOwnProperty(i)) {
+                    faixaList.push(
+                        <option value={faixas[i]} key={faixas[i]}>{faixas[i]}</option>
+                    )
+                }
+            }
+
+            return (
+                <div>
+                    <div style={{display: 'block'}}>
+                        Selecione o gênero: &nbsp;
                         <select>
-                            {optionsList}
+                            {genderList}
                         </select>
                     </div>
-                )
-            } else {
-                let generos = options['genero'];
-                let faixas = options['faixa'];
 
-                let genderList = [];
-                let faixaList = [];
-
-                for (let genero in generos) {
-                    if (generos.hasOwnProperty(genero)) {
-                        genderList.push(
-                            <option value={genero}>{genero}</option>
-                        )
-                    }
-                }
-
-                for (let faixa in faixas) {
-                    if (faixas.hasOwnProperty(faixa)) {
-                        faixaList.push(
-                            <option value={faixa}>{faixa}</option>
-                        )
-                    }
-                }
-
-                return (
-                    <div>
-                        <a>Selecione o gênero:</a>
-                        {genderList}
-
-                        <a>Selecione a faixa etária:</a>
+                    Selecione a faixa etária:&nbsp;
+                    <select>
                         {faixaList}
-                    </div>
-                )
-            }
+                    </select>
+                </div>
+            )
         }
     }
 }
