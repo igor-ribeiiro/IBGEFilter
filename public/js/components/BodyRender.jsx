@@ -5,6 +5,7 @@
 import React from 'react';
 import FilterOptions from './FilterOptions.jsx';
 import Body from './Body.jsx';
+import getOptions from './GetOptions.jsx';
 
 class BodyRender extends Body {
     constructor(props) {
@@ -34,6 +35,7 @@ class BodyRender extends Body {
 
         const spamStyle = {marginRight: '10px'};
         let list = [];
+        const options = getOptions(itens);
 
         for (let i in itens) {
             if (itens.hasOwnProperty(i)) {
@@ -41,13 +43,7 @@ class BodyRender extends Body {
                     <div style={{marginBottom: "30px"}}
                          key={itens[i].filter}>
                         <span style={spamStyle}>{itens[i].text}</span>
-                        <div className="dropDownButton dropdown">
-                            <button onClick={() => this.handleButtonClick(itens[i].filter)}
-                                    className="btn">{itens[i].filter} &nbsp; <i className="fa fa-angle-down">
-                            </i></button>
-                            <FilterOptions filter={itens[i].filter}
-                                           opened={this.state.currentOpened === itens[i].filter}/>
-                        </div>
+                            {options[i]}
                     </div>
                 );
             }
@@ -57,7 +53,7 @@ class BodyRender extends Body {
 
 
     render() {
-        const list = this.getList(this.state, this.handleButtonClick);
+        const list = this.getList();
         return (
             <div>
                 {list}
