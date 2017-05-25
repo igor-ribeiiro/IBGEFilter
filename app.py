@@ -48,11 +48,6 @@ def shutdown():
 
 
 def main():
-
-    logging.basicConfig({
-        'filename': LOG_PATH
-    })
-
     tornado.options.parse_command_line()
 
     application = tornado.web.Application([
