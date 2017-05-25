@@ -2,6 +2,7 @@
 
 import time
 import signal
+import os
 import logging
 
 import tornado.ioloop
@@ -17,6 +18,7 @@ from settings import settings
 
 define('port', default=8080, help='run on the given port', type=int)
 
+LOG_PATH = os.path.abspath('~/server.log')
 MAX_WAIT_BEFORE_SHUTDOWN = 3
 
 
@@ -46,6 +48,11 @@ def shutdown():
 
 
 def main():
+
+    logging.basicConfig({
+        'filename': LOG_PATH
+    })
+
     tornado.options.parse_command_line()
 
     application = tornado.web.Application([
@@ -57,6 +64,8 @@ def main():
 
     server = tornado.httpserver.HTTPServer(application)
     server.listen(options.port)
+
+    print('Server listening on port {}'.format(options.port))
 
     signal.signal(signal.SIGTERM, sig_handler)
     signal.signal(signal.SIGINT, sig_handler)
