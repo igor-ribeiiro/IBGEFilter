@@ -1,3 +1,6 @@
+An application that gets data from IBGE and prints out on the screen in a more visible way.
+
+
 # IBGEFilter
 
 To run the front end code:
